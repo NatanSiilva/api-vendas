@@ -1,0 +1,4 @@
+ npx tsc --init --rootDir src --outDir build --esModuleInterop --resolveJsonModule --lib es6 --module commonjs --allowJs true --noImplicitAny true
+message TS6071: Successfully created a tsconfig.json file.
+
+yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
