@@ -2,3 +2,12 @@
 message TS6071: Successfully created a tsconfig.json file.
 
 yarn add -D eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+yarn add eslint-config-prettier@6.15.0 eslint-plugin-prettier@3.2.0 -D
+
+yarn add -D tsconfig-paths
+
+
+yarn add express cors express-async-errors
+
+yarn add -D @types/express @types/cors
