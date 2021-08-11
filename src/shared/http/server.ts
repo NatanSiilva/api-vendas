@@ -1,8 +1,10 @@
+import 'reflect-metadata';
 import dotenv from 'dotenv';
-import express, { NextFunction, Request, response, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import routes from '@shared/http/routes/index';
 import AppError from '@shared/errors/AppError';
+import '@shared/typeorm';
 
 const app = express();
 
