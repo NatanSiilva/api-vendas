@@ -11,3 +11,5 @@ text.txt
 
 uploads/*
 !uploads/.gitkeep
+
+.docker/dbdata

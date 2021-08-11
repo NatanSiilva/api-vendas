@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
 import express, { NextFunction, Request, response, Response } from 'express';
 import cors from 'cors';
 import routes from '@shared/http/routes/index';
 import AppError from '@shared/errors/AppError';
 
 const app = express();
+
+dotenv.config();
 
 app.use(cors());
 app.use(express.json());

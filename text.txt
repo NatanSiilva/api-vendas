@@ -11,3 +11,8 @@ yarn add -D tsconfig-paths
 yarn add express cors express-async-errors
 
 yarn add -D @types/express @types/cors
+
+
+chmod +x .docker/entrypoint.sh
+
+ls -la .docker
