@@ -16,3 +16,6 @@ yarn add -D @types/express @types/cors
 chmod +x .docker/entrypoint.sh
 
 ls -la .docker
+
+ yarn add celebrate
+  yarn add celebrate
