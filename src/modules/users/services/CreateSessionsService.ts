@@ -1,5 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { compare } from 'bcryptjs';
+import authConfig from '@config/auth';
 import { sign } from 'jsonwebtoken';
 import { getCustomRepository } from 'typeorm';
 import User from '../typeorm/entities/User';
@@ -33,10 +34,10 @@ class CreateSessionsService {
 
     const token = sign(
       { name: user.name, id: user.id },
-      '8a5da52ed126447d359e70c05721a8aa',
+      authConfig.jwt.secret,
       {
         subject: user.id,
-        expiresIn: '1d',
+        expiresIn: authConfig.jwt.expiresIn,
       },
     );
 
