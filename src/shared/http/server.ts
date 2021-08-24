@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
@@ -12,8 +12,6 @@ import '@shared/typeorm';
 import uploadConfig from '@config/upload';
 
 const app = express();
-
-dotenv.config();
 
 app.use(cors());
 app.use(express.json());
