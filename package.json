@@ -30,6 +30,8 @@
     "typescript": "^4.3.5"
   },
   "dependencies": {
+    "@types/ioredis": "^4.26.7",
+    "@types/redis": "^2.8.31",
     "bcryptjs": "^2.4.3",
     "celebrate": "^15.0.0",
     "class-transformer": "^0.4.0",
@@ -39,10 +41,12 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "handlebars": "^4.7.7",
+    "ioredis": "^4.27.8",
     "jsonwebtoken": "^8.5.1",
     "multer": "^1.4.3",
     "nodemailer": "^6.6.3",
     "pg": "^8.7.1",
+    "redis": "^3.1.2",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.36",
     "typeorm-pagination": "^2.0.3",
