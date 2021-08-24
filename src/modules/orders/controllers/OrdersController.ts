@@ -3,18 +3,18 @@ import CreateOrderService from '../services/CreateOrderService';
 import ShowOrderService from '../services/ShowOrderService';
 
 export default class OrdersController {
-  public async show(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
 
     const showOrder = new ShowOrderService();
 
-    const product = await showOrder.execute({ id });
+    const order = await showOrder.execute({ id });
 
-    return res.json(product);
+    return response.json(order);
   }
 
-  public async create(req: Request, res: Response): Promise<Response> {
-    const { customer_id, products } = req.body;
+  public async create(request: Request, response: Response): Promise<Response> {
+    const { customer_id, products } = request.body;
 
     const createOrder = new CreateOrderService();
 
@@ -23,6 +23,6 @@ export default class OrdersController {
       products,
     });
 
-    return res.json(order);
+    return response.json(order);
   }
 }
