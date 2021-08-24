@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
 import CreateUserService from '../services/CreateUserService';
 import ListUserService from '../services/ListUserService';
 
@@ -8,7 +9,7 @@ export default class UsersController {
 
     const users = await listUsers.execute();
 
-    return res.json(users);
+    return res.json(classToClass(users));
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
@@ -22,6 +23,6 @@ export default class UsersController {
       password,
     });
 
-    return res.json(user);
+    return res.json(classToClass(user));
   }
 }

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response } from 'express';
+import { classToClass } from 'class-transformer';
 import UpdateUserAvatarService from '../services/UpdateUserAvatarService';
 
 export default class UserAvatarController {
@@ -13,6 +14,6 @@ export default class UserAvatarController {
       avatarFilename: filename,
     });
 
-    return res.json(user);
+    return res.json(classToClass(user));
   }
 }
