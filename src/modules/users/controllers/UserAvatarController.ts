@@ -9,7 +9,7 @@ export default class UserAvatarController {
 
     const { filename } = req.file as any;
 
-    const user = updateAvatar.execute({
+    const user = await updateAvatar.execute({
       user_id: req.user.id,
       avatarFilename: filename,
     });
