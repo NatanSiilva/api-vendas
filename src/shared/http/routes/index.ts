@@ -18,7 +18,7 @@ routes.use('/customers', customersRouter);
 routes.use('/orders', ordersRouter);
 
 routes.get('/', (req: Request, res: Response) => {
-  return res.json({ message: 'Hello dev' });
+  return res.json({ message: 'Server in use 🚀' });
 });
 
 export default routes;

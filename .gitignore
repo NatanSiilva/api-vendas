@@ -11,5 +11,5 @@ text.txt
 
 uploads/*
 !uploads/.gitkeep
-
+Deploy.txt
 .docker/dbdata
