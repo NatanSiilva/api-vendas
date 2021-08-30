@@ -4,6 +4,7 @@ import DeleteCustomerService from '../../../services/DeleteCustomerService';
 import ListCustomerService from '../../../services/ListCustomerService';
 import ShowCustomerService from '../../../services/ShowCustomerService';
 import UpdateCustomerService from '../../../services/UpdateCustomerService';
+import CustomersRepository from '../../typeorm/repositories/CustomersRepository';
 
 export default class CustomerController {
   public async index(req: Request, res: Response): Promise<Response> {
@@ -27,7 +28,9 @@ export default class CustomerController {
   public async create(req: Request, res: Response): Promise<Response> {
     const { name, email } = req.body;
 
-    const createCustomer = new CreateCustomerService();
+    const customersRepository = new CustomersRepository();
+
+    const createCustomer = new CreateCustomerService(customersRepository);
 
     const customer = await createCustomer.execute({
       name,
