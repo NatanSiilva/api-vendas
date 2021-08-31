@@ -2,11 +2,14 @@ import { ICustomersRepository } from '../domain/repositories/ICustomersRepositor
 import { ICreateCustomer } from '../domain/models/ICreateCustomer';
 import { ICustomer } from '../domain/models/ICustomer';
 import AppError from '@shared/errors/AppError';
+import { inject, injectable } from 'tsyringe';
 
+@injectable()
 class CreateCustomerService {
-  constructor(private customersRepository: ICustomersRepository) {
-    this.customersRepository = customersRepository;
-  }
+  constructor(
+    @inject('CustomersRepository')
+    private customersRepository: ICustomersRepository,
+  ) {}
 
   public async execute({ email, name }: ICreateCustomer): Promise<ICustomer> {
     const emailExists = await this.customersRepository.findByEmail(email);

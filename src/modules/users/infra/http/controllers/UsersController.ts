@@ -1,21 +1,40 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+import CreateUserService from '@modules/users/services/CreateUserService';
+import ListUserService from '@modules/users/services/ListUserService';
+import ShowUserService from '@modules/users/services/ShowUserService';
 import { classToClass } from 'class-transformer';
-import CreateUserService from '../../../services/CreateUserService';
-import ListUserService from '../../../services/ListUserService';
 
 export default class UsersController {
-  public async index(req: Request, res: Response): Promise<Response> {
-    const listUsers = new ListUserService();
+  public async index(request: Request, response: Response): Promise<Response> {
+    let search = '';
+    const sortField = String(request.query.sortField);
 
-    const users = await listUsers.execute();
+    if (request.query.search) {
+      search = String(request.query.search);
+    }
 
-    return res.json(classToClass(users));
+    const listUser = container.resolve(ListUserService);
+
+    const users = await listUser.execute(search, sortField);
+
+    return response.json(classToClass(users));
   }
 
-  public async create(req: Request, res: Response): Promise<Response> {
-    const { name, email, password } = req.body;
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
 
-    const createUser = new CreateUserService();
+    const showUser = container.resolve(ShowUserService);
+
+    const user = await showUser.execute({ id });
+
+    return response.json(user);
+  }
+
+  public async create(request: Request, response: Response): Promise<Response> {
+    const { name, email, password } = request.body;
+
+    const createUser = container.resolve(CreateUserService);
 
     const user = await createUser.execute({
       name,
@@ -23,6 +42,6 @@ export default class UsersController {
       password,
     });
 
-    return res.json(classToClass(user));
+    return response.json(classToClass(user));
   }
 }

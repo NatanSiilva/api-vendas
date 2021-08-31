@@ -13,10 +13,11 @@ class Product {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
-  name: string;
   @OneToMany(() => OrdersProducts, order_products => order_products.product)
   order_products: OrdersProducts[];
+
+  @Column()
+  name: string;
 
   @Column('decimal')
   price: number;
