@@ -1,31 +1,77 @@
+import { v4 as uuidv4 } from 'uuid';
 import { ICreateCustomer } from '@modules/customers/domain/models/ICreateCustomer';
-import { ICustomerPaginate } from '@modules/customers/domain/models/ICustomerPaginate';
 import { ICustomersRepository } from '@modules/customers/domain/repositories/ICustomersRepository';
+import Customer from '@modules/customers/infra/typeorm/entities/Customer';
+import { ICustomerPaginate } from '../../models/ICustomerPaginate';
 
-import Customer from '../entities/Customer';
+class FakeCustomersRepository
+  implements Omit<ICustomersRepository, 'remove' | 'add' | 'findAll'>
+{
+  private customers: Customer[] = [];
 
-class CustomersRepository implements ICustomersRepository {
-  private ormRepository: Repository<Customer>;
+  public async create({ name, email }: ICreateCustomer): Promise<Customer> {
+    const customer = new Customer();
 
-  constructor() {
-    this.ormRepository = getRepository(Customer);
+    customer.id = uuidv4();
+    customer.name = name;
+    customer.email = email;
+
+    this.customers.push(customer);
+
+    return customer;
   }
 
-  public async create({ name, email }: ICreateCustomer): Promise<Customer> {}
+  public async save(customer: Customer): Promise<Customer> {
+    const findIndex = this.customers.findIndex(
+      findCustomer => findCustomer.id === customer.id,
+    );
 
-  // public async save(customer: Customer): Promise<Customer> {}
+    this.customers[findIndex] = customer;
 
-  // public async remove(customer: Customer): Promise<void> {}
+    return customer;
+  }
 
-  // public async findAll(): Promise<Customer[] | undefined> {}
+  public async remove(customer: Customer): Promise<void> {
+    const findIndex = this.customers.findIndex(
+      findCustomer => findCustomer.id === customer.id,
+    );
 
-  // public async findAllPaginate(): Promise<ICustomerPaginate> {}
+    this.customers.splice(findIndex, 1);
+  }
 
-  // public async findByName(name: string): Promise<Customer | undefined> {}
+  public async findAll(): Promise<Customer[] | undefined> {
+    return undefined;
+  }
 
-  // public async findById(id: string): Promise<Customer | undefined> {}
+  public async findAllPaginate(): Promise<ICustomerPaginate> {
+    const customersPaginate = {
+      from: 1,
+      to: 1,
+      per_page: 1,
+      total: 1,
+      current_page: 1,
+      prev_page: null,
+      next_page: null,
+      data: this.customers,
+    };
 
-  // public async findByEmail(email: string): Promise<Customer | undefined> {}
+    return customersPaginate;
+  }
+
+  public async findByName(name: string): Promise<Customer | undefined> {
+    const customer = this.customers.find(customer => customer.name === name);
+    return customer;
+  }
+
+  public async findById(id: string): Promise<Customer | undefined> {
+    const customer = this.customers.find(customer => customer.id === id);
+    return customer;
+  }
+
+  public async findByEmail(email: string): Promise<Customer | undefined> {
+    const customer = this.customers.find(customer => customer.email === email);
+    return customer;
+  }
 }
 
-export default CustomersRepository;
+export default FakeCustomersRepository;
