@@ -21,7 +21,7 @@
       "post": {
         "summary": "Autenticação do usuário",
         "description": "Essa rota é responsável por da acesso a aplicação",
-        "tags": ["Sessions"],
+        "tags": ["Auth"],
         "requestBody": {
           "content": {
             "application/json": {
@@ -29,7 +29,7 @@
                 "$ref": "#/components/schemas/Sessions"
               },
               "examples": {
-                "Product": {
+                "Sessions": {
                   "value": {
                     "email": "api-vendas@email.com",
                     "password": "123456"
@@ -76,7 +76,7 @@
                 "$ref": "#/components/schemas/Users"
               },
               "examples": {
-                "Product": {
+                "Users": {
                   "value": {
                     "name": "Lucas Silva",
                     "email": "lucas-silva@email.com",
@@ -119,6 +119,91 @@
                 }
               }
             }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar todos os usuários",
+        "description": "Essa rota é responsável por criar usuário",
+        "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "search",
+            "required": false,
+            "description": "Consulta pelas chaves name + email do usuário",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "200": {
+            "description": "Successfully created product"
+          }
+        }
+      }
+    },
+    "/users/forgot-password": {
+      "post": {
+        "summary": "Enviar um token de recuperação de senha para o email do usuário ",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "schema": {
+              "$ref": "#/components/schemas/Forgot-password"
+            },
+            "application/json": {
+              "examples": {
+                "Users": {
+                  "value": {
+                    "email": "lucas-silva@email.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "User does not exists"
+          },
+          "200": {
+            "description": "email sent successfully"
+          }
+        }
+      }
+    },
+    "/users/reset-password": {
+      "post": {
+        "summary": "Atualizar a senha do usuário com um token que foi enviado para o email do usuário",
+        "tags": ["Auth"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Reset-password"
+              },
+              "examples": {
+                "Reset-password": {
+                  "value": {
+                    "token": "4f9df3d7-4f73-4c83-b35c-830ac5476efc",
+                    "password": "123456",
+                    "password_confirmation": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "400": {
+            "description": "User Token does not exists or User does not exists."
+          },
+          "200": {
+            "description": "email sent successfully"
           }
         }
       }
@@ -220,6 +305,38 @@
           "password": {
             "type": "string",
             "description": "Senha do usuário",
+            "example": "123456"
+          }
+        }
+      },
+      "Forgot-password": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": {
+            "type": "string",
+            "description": "Email a ser enviado o token de recuperação",
+            "example": "teste@teste.com"
+          }
+        }
+      },
+      "Reset-password": {
+        "type": "object",
+        "required": ["token", "password", "password_confirmation"],
+        "properties": {
+          "token": {
+            "type": "string",
+            "description": "Token que foi enviado para o email de recuperação",
+            "example": "4f9df3d7-4f73-4c83-b35c-830ac5476efc"
+          },
+          "password": {
+            "type": "string",
+            "description": "Nova senha",
+            "example": "123456"
+          },
+          "password_confirmation": {
+            "type": "string",
+            "description": "Confirmar a nova senha",
             "example": "123456"
           }
         }
