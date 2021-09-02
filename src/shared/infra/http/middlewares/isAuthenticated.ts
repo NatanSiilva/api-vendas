@@ -19,7 +19,7 @@ export default function isAuthenticated(
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-    throw new AppError('JWT Token is missing.');
+    throw new AppError('JWT Token is missing.', 401);
   }
 
   const [, token] = authHeader.split(' ');
@@ -28,7 +28,7 @@ export default function isAuthenticated(
     const decodedToken = verify(token, authConfig.jwt.secret as string);
 
     if (!decodedToken) {
-      throw new AppError('JWT Token is invalid.');
+      throw new AppError('JWT Token is invalid.', 401);
     }
 
     const { id } = decodedToken as ITokenPayload;
