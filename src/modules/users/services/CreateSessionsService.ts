@@ -23,7 +23,7 @@ class CreateSessionsService {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('Incorrect email/password combination.', 401);
+      throw new AppError('Incorrect email/password combination.');
     }
 
     const passwordConfirmed = await this.hashProvider.compareHash(
@@ -32,7 +32,7 @@ class CreateSessionsService {
     );
 
     if (!passwordConfirmed) {
-      throw new AppError('Incorrect email/password combination.', 401);
+      throw new AppError('Incorrect email/password combination.');
     }
 
     const token = sign({}, authConfig.jwt.secret as Secret, {

@@ -17,11 +17,118 @@
     }
   ],
   "paths": {
+    "/sessions": {
+      "post": {
+        "summary": "Autenticação do usuário",
+        "description": "Essa rota é responsável por da acesso a aplicação",
+        "tags": ["Sessions"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sessions"
+              },
+              "examples": {
+                "Product": {
+                  "value": {
+                    "email": "api-vendas@email.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Incorrect email/password combination"
+          },
+          "200": {
+            "description": "Incorrect email/password combination",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "user": {},
+                    "token": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Criar novo usuário",
+        "description": "Essa rota é responsável por criar usuário",
+        "tags": ["Users"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Users"
+              },
+              "examples": {
+                "Product": {
+                  "value": {
+                    "name": "Lucas Silva",
+                    "email": "lucas-silva@email.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Email address already used"
+          },
+          "200": {
+            "description": "Successfully created product",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/products": {
       "post": {
         "summary": "Cadastro de produto",
         "description": "Essa rota é responsável por cadastrar um novo produto",
         "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
         "requestBody": {
           "content": {
             "application/json": {
@@ -82,19 +189,68 @@
   },
   "components": {
     "schemas": {
-      "Product": {
+      "Sessions": {
         "type": "object",
+        "required": ["email", "password"],
         "properties": {
-          "name": {
-            "type": "string"
+          "email": {
+            "type": "string",
+            "example": "api-vendas@email.com"
           },
-          "price": {
-            "type": "number"
-          },
-          "quantity": {
-            "type": "number"
+          "password": {
+            "type": "string",
+            "example": "123456"
           }
         }
+      },
+      "Users": {
+        "type": "object",
+        "required": ["name", "email, password"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do usuário",
+            "example": "Lucas Silva"
+          },
+          "email": {
+            "type": "string",
+            "description": "E-mail do usuário",
+            "example": "lucas-silva@email.com"
+          },
+          "password": {
+            "type": "string",
+            "description": "Senha do usuário",
+            "example": "123456"
+          }
+        }
+      },
+      "Product": {
+        "type": "object",
+        "required": ["name", "price", "quantity"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do produto",
+            "example": "Book 01"
+          },
+          "price": {
+            "type": "number",
+            "description": "Valor do produto",
+            "example": "100"
+          },
+          "quantity": {
+            "type": "number",
+            "description": "Quantidade do produto",
+            "example": "1"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
