@@ -146,6 +146,43 @@
         }
       }
     },
+    "/users/avatar": {
+      "patch": {
+        "summary": "Atualizar o avatar do usuário logado",
+        "description": "Essa rota é responsável por atualizar o avatar do usuário logado",
+        "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "email": {
+                  "type": "string"
+                }
+              },
+              "examples": {
+                "Avatar": {
+                  "value": {
+                    "avatar": "https://avatars.githubusercontent.com/u/66763596?v=4"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "User not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/users": {
       "post": {
         "summary": "Criar novo usuário",
@@ -342,6 +379,49 @@
             }
           }
         },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "There is already one product with this name"
+          },
+          "200": {
+            "description": "Product created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "price": {
+                      "type": "number"
+                    },
+                    "quantity": {
+                      "type": "number"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar todos os produtos",
+        "description": "Essa rota é responsável por listar todos os produtos",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
         "responses": {
           "401": {
             "description": "Unauthorized, JWT Token is missing"
