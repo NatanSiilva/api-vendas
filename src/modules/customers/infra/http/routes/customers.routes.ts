@@ -1,11 +1,10 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
-import CustomerController from '../controllers/CustomerController';
+import CustomersController from '../controllers/CustomersController';
 import isAuthenticated from '@shared/infra/http/middlewares/isAuthenticated';
 
 const customersRouter = Router();
-
-const customersController = new CustomerController();
+const customersController = new CustomersController();
 
 customersRouter.use(isAuthenticated);
 
@@ -53,7 +52,7 @@ customersRouter.delete(
       id: Joi.string().uuid().required(),
     },
   }),
-  customersController.destroy,
+  customersController.delete,
 );
 
 export default customersRouter;

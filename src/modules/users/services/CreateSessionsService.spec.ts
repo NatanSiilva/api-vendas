@@ -1,6 +1,6 @@
 import 'reflect-metadata';
+import FakeUsersRepository from '@modules/users/domain/repositories/fakes/FakeUsersRepository';
 import AppError from '@shared/errors/AppError';
-import FakeUsersRepository from '../domain/repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '../providers/HashProvider/fakes/FakeHashProvider';
 import CreateSessionsService from './CreateSessionsService';
 
@@ -19,41 +19,41 @@ describe('CreateSession', () => {
   });
 
   it('should be able to authenticate', async () => {
-    const User = await fakeUsersRepository.create({
-      name: 'John Doe',
-      email: 'natan.teste@email.com',
+    const user = await fakeUsersRepository.create({
+      name: 'Jorge Aluizio',
+      email: 'teste@teste.com',
       password: '123456',
     });
 
     const response = await createSession.execute({
-      email: 'natan.teste@email.com',
+      email: 'teste@teste.com',
       password: '123456',
     });
 
     expect(response).toHaveProperty('token');
-    expect(response.user).toEqual(User);
+    expect(response.user).toEqual(user);
   });
 
   it('should not be able to authenticate with non existent user', async () => {
     expect(
       createSession.execute({
-        email: 'natan.teste@email.com',
+        email: 'teste@teste.com',
         password: '123456',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should not be able to authenticate with wrong password', async () => {
-    await fakeUsersRepository.create({
-      name: 'John Doe',
-      email: 'natan.teste@email.com',
+    const user = await fakeUsersRepository.create({
+      name: 'Jorge Aluizio',
+      email: 'teste@teste.com',
       password: '123456',
     });
 
     expect(
       createSession.execute({
-        email: 'natan.teste@email.com',
-        password: '1234',
+        email: 'teste@teste.com',
+        password: '567890',
       }),
     ).rejects.toBeInstanceOf(AppError);
   });

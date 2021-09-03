@@ -8,7 +8,7 @@ const forgotPasswordController = new ForgotPasswordController();
 const resetPasswordController = new ResetPasswordController();
 
 passwordRouter.post(
-  '/forgot-password',
+  '/forgot',
   celebrate({
     [Segments.BODY]: {
       email: Joi.string().email().required(),
@@ -18,7 +18,7 @@ passwordRouter.post(
 );
 
 passwordRouter.post(
-  '/reset-password',
+  '/reset',
   celebrate({
     [Segments.BODY]: {
       token: Joi.string().uuid().required(),

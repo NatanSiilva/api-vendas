@@ -1,32 +1,32 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import CreateProductService from '../../../services/CreateProductService';
-import DeleteProductService from '../../../services/DeleteProductService';
-import ListProductService from '../../../services/ListProductService';
-import ShowProductService from '../../../services/ShowProductService';
-import UpdateProductService from '../../../services/UpdateProductService';
+import CreateProductService from '@modules/products/services/CreateProductService';
+import DeleteProductService from '@modules/products/services/DeleteProductService';
+import ListProductService from '@modules/products/services/ListProductService';
+import ShowProductService from '@modules/products/services/ShowProductService';
+import UpdateProductService from '@modules/products/services/UpdateProductService';
 
 export default class ProductsController {
-  public async index(req: Request, res: Response): Promise<Response> {
+  public async index(request: Request, response: Response): Promise<Response> {
     const listProducts = container.resolve(ListProductService);
 
     const products = await listProducts.execute();
 
-    return res.json(products);
+    return response.json(products);
   }
 
-  public async show(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
 
     const showProduct = container.resolve(ShowProductService);
 
     const product = await showProduct.execute({ id });
 
-    return res.json(product);
+    return response.json(product);
   }
 
-  public async create(req: Request, res: Response): Promise<Response> {
-    const { name, price, quantity } = req.body;
+  public async create(request: Request, response: Response): Promise<Response> {
+    const { name, price, quantity } = request.body;
 
     const createProduct = container.resolve(CreateProductService);
 
@@ -36,13 +36,12 @@ export default class ProductsController {
       quantity,
     });
 
-    return res.json(product);
+    return response.json(product);
   }
 
-  public async update(req: Request, res: Response): Promise<Response> {
-    const { name, price, quantity } = req.body;
-
-    const { id } = req.params;
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { name, price, quantity } = request.body;
+    const { id } = request.params;
 
     const updateProduct = container.resolve(UpdateProductService);
 
@@ -53,16 +52,16 @@ export default class ProductsController {
       quantity,
     });
 
-    return res.json(product);
+    return response.json(product);
   }
 
-  public async destroy(req: Request, res: Response): Promise<Response> {
-    const { id } = req.params;
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
 
-    const destroyProduct = container.resolve(DeleteProductService);
+    const deleteProduct = container.resolve(DeleteProductService);
 
-    await destroyProduct.execute({ id });
+    await deleteProduct.execute({ id });
 
-    return res.json([]);
+    return response.json([]);
   }
 }

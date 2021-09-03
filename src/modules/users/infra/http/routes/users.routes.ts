@@ -15,7 +15,7 @@ const upload = multer(uploadConfig.multer);
 usersRouter.get('/', isAuthenticated, usersController.index);
 
 usersRouter.get(
-  '/:id',
+  '/id/:id',
   isAuthenticated,
   celebrate({
     [Segments.PARAMS]: {

@@ -8,7 +8,6 @@ interface ITokenPayload {
   exp: number;
   sub: string;
   name: string;
-  id: string;
 }
 
 export default function isAuthenticated(
@@ -31,10 +30,10 @@ export default function isAuthenticated(
       throw new AppError('JWT Token is invalid.', 401);
     }
 
-    const { id } = decodedToken as ITokenPayload;
+    const { sub } = decodedToken as ITokenPayload;
 
     req.user = {
-      id,
+      id: sub,
     };
 
     return next();

@@ -5,7 +5,7 @@ import authConfig from '@config/auth';
 import { ICreateSession } from '../domain/models/ICreateSession';
 import { IUserAuthenticated } from '../domain/models/IUserAuthenticated';
 import { IUsersRepository } from '../domain/repositories/IUsersRepository';
-import { IHashProvider } from '../providers/HashProvider/models/IHashProvider';
+import { IHashProvider } from '../providers/HashProvider/models/IHashPovider';
 
 @injectable()
 class CreateSessionsService {
@@ -23,7 +23,7 @@ class CreateSessionsService {
     const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
-      throw new AppError('Incorrect email/password combination.');
+      throw new AppError('Incorrect email/password combination.', 401);
     }
 
     const passwordConfirmed = await this.hashProvider.compareHash(
@@ -32,7 +32,7 @@ class CreateSessionsService {
     );
 
     if (!passwordConfirmed) {
-      throw new AppError('Incorrect email/password combination.');
+      throw new AppError('Incorrect email/password combination.', 401);
     }
 
     const token = sign({}, authConfig.jwt.secret as Secret, {

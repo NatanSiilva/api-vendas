@@ -4,9 +4,7 @@ import { ICustomersRepository } from '@modules/customers/domain/repositories/ICu
 import Customer from '@modules/customers/infra/typeorm/entities/Customer';
 import { ICustomerPaginate } from '../../models/ICustomerPaginate';
 
-class FakeCustomersRepository
-  implements Omit<ICustomersRepository, 'remove' | 'add' | 'findAll'>
-{
+class FakeCustomersRepository implements ICustomersRepository {
   private customers: Customer[] = [];
 
   public async create({ name, email }: ICreateCustomer): Promise<Customer> {
@@ -31,13 +29,7 @@ class FakeCustomersRepository
     return customer;
   }
 
-  public async remove(customer: Customer): Promise<void> {
-    const findIndex = this.customers.findIndex(
-      findCustomer => findCustomer.id === customer.id,
-    );
-
-    this.customers.splice(findIndex, 1);
-  }
+  public async remove(customer: Customer): Promise<void> {}
 
   public async findAll(): Promise<Customer[] | undefined> {
     return undefined;

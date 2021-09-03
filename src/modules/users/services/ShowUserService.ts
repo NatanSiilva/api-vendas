@@ -11,8 +11,8 @@ class ShowUserService {
     private usersRepository: IUsersRepository,
   ) {}
 
-  public async execute({ id }: IShowUser): Promise<User> {
-    const user = await this.usersRepository.findById(id);
+  public async execute({ user_id }: IShowUser): Promise<User> {
+    const user = await this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new AppError('User not found.');

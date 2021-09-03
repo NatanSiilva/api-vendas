@@ -31,7 +31,7 @@
               "examples": {
                 "Sessions": {
                   "value": {
-                    "email": "api-vendas@email.com",
+                    "email": "contato@natandev.com",
                     "password": "123456"
                   }
                 }
@@ -47,7 +47,7 @@
             "description": "Incorrect email/password combination"
           },
           "200": {
-            "description": "Incorrect email/password combination",
+            "description": "Ok",
             "content": {
               "application/json": {
                 "schema": {
@@ -60,6 +60,88 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/profile": {
+      "put": {
+        "summary": "Alterar os dados do usuário logado",
+        "description": "Rota responsável por atualizar os dados do usuário logado",
+        "tags": ["Profile"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Profile"
+              },
+              "examples": {
+                "Profile": {
+                  "value": {
+                    "name": "Natanael Silva",
+                    "email": "contato@natandev1.com",
+                    "old_password": "123456",
+                    "password": "111111",
+                    "password_confirmation": "111111"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Old password does not match."
+          },
+          "200": {
+            "description": "Data updated as success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "avatar": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Consultar os dados do usuário logado",
+        "description": "Rota responsável por consultar os dado do usuário logado",
+        "tags": ["Profile"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "User not found"
+          },
+          "200": {
+            "description": "Ok"
           }
         }
       }
@@ -146,6 +228,34 @@
         }
       }
     },
+    "/users/id/{id}": {
+      "get": {
+        "summary": "Consultar os dados do usuário pelo id",
+        "description": "Essa rota é responsável por consultar os dados do suário pelo id",
+        "tags": ["Users"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Consulta pelo id do usuário",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "User not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/users/forgot-password": {
       "post": {
         "summary": "Enviar um token de recuperação de senha para o email do usuário ",
@@ -210,7 +320,7 @@
     },
     "/products": {
       "post": {
-        "summary": "Cadastro de produto",
+        "summary": "Cadastrar um novo produto",
         "description": "Essa rota é responsável por cadastrar um novo produto",
         "tags": ["Products"],
         "security": [{ "bearerAuth": [] }],
@@ -285,6 +395,37 @@
           "password": {
             "type": "string",
             "example": "123456"
+          }
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "required": ["name", "email"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do usuário",
+            "example": "Victor"
+          },
+          "email": {
+            "type": "string",
+            "description": "Novo e-mail do usuário",
+            "example": "breno@email.com"
+          },
+          "old_password": {
+            "type": "string",
+            "description": "Senha antiga do usuário",
+            "example": "123456"
+          },
+          "password": {
+            "type": "string",
+            "description": "Nova senha usuário",
+            "example": "teste123"
+          },
+          "password_confirmation": {
+            "type": "string",
+            "description": "Confirmar a nova senha do usuário",
+            "example": "teste123"
           }
         }
       },
