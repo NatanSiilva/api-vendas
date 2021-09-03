@@ -11,7 +11,7 @@ customersRouter.use(isAuthenticated);
 customersRouter.get('/', customersController.index);
 
 customersRouter.get(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
@@ -32,7 +32,7 @@ customersRouter.post(
 );
 
 customersRouter.put(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
@@ -46,7 +46,7 @@ customersRouter.put(
 );
 
 customersRouter.delete(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),

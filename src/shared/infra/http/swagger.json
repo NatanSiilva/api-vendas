@@ -427,6 +427,104 @@
             "description": "Unauthorized, JWT Token is missing"
           },
           "400": {
+            "description": "Not product"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/products/id/{id}": {
+      "get": {
+        "summary": "Consultar os dados do produto pelo id",
+        "description": "Essa rota é responsável por consultar os dados do produto pelo id",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Consulta pelo id do produto",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Product not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar o produto",
+        "description": "Essa rota é responsável por deletar o produto",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Deletar pelo id do produto",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Product not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar o produto",
+        "description": "Essa rota é responsável por atualizar o produto",
+        "tags": ["Products"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Product"
+              },
+              "examples": {
+                "Product": {
+                  "value": {
+                    "name": "Book 01",
+                    "price": 100,
+                    "quantity": 10
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Deletar pelo id do produto",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
             "description": "There is already one product with this name"
           },
           "200": {
@@ -446,6 +544,202 @@
                     },
                     "quantity": {
                       "type": "number"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/customers": {
+      "post": {
+        "summary": "Cadastrar um novo ciente",
+        "description": "Essa rota é responsável por cadastrar um novo cliente",
+        "tags": ["Customers"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customers"
+              },
+              "examples": {
+                "Customers": {
+                  "value": {
+                    "name": "Luiz Silva",
+                    "email": "luiz@email.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Email address already used"
+          },
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "number"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar todos os clientes",
+        "description": "Essa rota é responsável por listar todos os clientes",
+        "tags": ["Customers"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Not customers"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    "/customers/id/{id}": {
+      "get": {
+        "summary": "Consultar os dados do cliente pelo id",
+        "description": "Essa rota é responsável por consultar os dados do cliente pelo id",
+        "tags": ["Customers"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Consulta pelo id do cliente",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Customers not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar o cliente",
+        "description": "Essa rota é responsável por deletar o cliente",
+        "tags": ["Customers"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Deletar pelo id do cliente",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Cliente not found"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      },
+      "put": {
+        "summary": "Atualizar o cliente",
+        "description": "Essa rota é responsável por atualizar os dados dp  cliente",
+        "tags": ["Customers"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Customer"
+              },
+              "examples": {
+                "Product": {
+                  "value": {
+                    "name": "Luiz Silva",
+                    "email": "luiz@email.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": false,
+            "description": "Deletar pelo id do cliente",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "There is already one customer with this email."
+          },
+          "200": {
+            "description": "Customers updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
                     },
                     "created_at": {
                       "type": "string"
@@ -580,6 +874,22 @@
             "type": "number",
             "description": "Quantidade do produto",
             "example": "1"
+          }
+        }
+      },
+      "Customers": {
+        "type": "object",
+        "required": ["name", "email"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Nome do cliente",
+            "example": "Luiz de Oliveira"
+          },
+          "email": {
+            "type": "string",
+            "description": "E-mail do cliente",
+            "example": "luiz@email.com"
           }
         }
       }

@@ -8,7 +8,7 @@ const productsController = new ProductsController();
 productsRouter.get('/', productsController.index);
 
 productsRouter.get(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
@@ -30,7 +30,7 @@ productsRouter.post(
 );
 
 productsRouter.put(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.BODY]: {
       name: Joi.string().required(),
@@ -45,7 +45,7 @@ productsRouter.put(
 );
 
 productsRouter.delete(
-  '/:id',
+  '/id/:id',
   celebrate({
     [Segments.PARAMS]: {
       id: Joi.string().uuid().required(),
