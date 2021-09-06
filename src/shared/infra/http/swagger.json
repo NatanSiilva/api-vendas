@@ -561,7 +561,7 @@
     },
     "/customers": {
       "post": {
-        "summary": "Cadastrar um novo ciente",
+        "summary": "Cadastrar um novo cliente",
         "description": "Essa rota é responsável por cadastrar um novo cliente",
         "tags": ["Customers"],
         "security": [{ "bearerAuth": [] }],
@@ -754,6 +754,127 @@
           }
         }
       }
+    },
+    "/orders": {
+      "post": {
+        "summary": "Cadastrar um novo pedido",
+        "description": "Essa rota é responsável por cadastrar um novo pedido",
+        "tags": ["Orders"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Orders"
+              },
+              "examples": {
+                "Orders": {
+                  "value": {
+                    "customer_id": "0f6430ab-3001-418f-819c-376f63f1f5fd",
+                    "products": [
+                      {
+                        "id": "f8d1d127-36d5-47ce-a3ba-523c0bf79b16",
+                        "quantity": 1
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Product not found"
+          },
+          "200": {
+            "description": "Ok 1",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "customer": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "order_products": {
+                      "type": "object",
+                      "properties": {
+                        "product_id": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "number"
+                        },
+                        "quantity": {
+                          "type": "number"
+                        },
+                        "order_id": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "id": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Listar todos os pedidos",
+        "description": "Essa rota é responsável por listar todos os pedidos",
+        "tags": ["Orders"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "401": {
+            "description": "Unauthorized, JWT Token is missing"
+          },
+          "400": {
+            "description": "Not orders"
+          },
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -890,6 +1011,36 @@
             "type": "string",
             "description": "E-mail do cliente",
             "example": "luiz@email.com"
+          }
+        }
+      },
+      "Orders": {
+        "type": "object",
+        "required": ["products", "customer_id"],
+        "properties": {
+          "customer_id": {
+            "type": "string",
+            "description": "Id do cliente",
+            "example": "3c9d337e-adeb-4bc4-9c72-e252cc33bafa"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "quantity"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "id do produto",
+                  "example": "3c9d337e-adeb-4bc4-9c72-e252cc33bafa"
+                },
+                "quantity": {
+                  "type": "number",
+                  "description": "Quantidade do produto no pedido",
+                  "example": "1"
+                }
+              }
+            }
           }
         }
       }
