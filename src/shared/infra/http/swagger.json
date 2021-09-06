@@ -1,9 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "API de vendas",
+    "title": "API vendas",
     "description": "API de vendas - desenvolvida para estudos",
-    "termsOfService": "https://localhost:3333/terms",
     "contact": {
       "name": "Natanael Silva",
       "email": "contato@natandev.com.br"
@@ -13,7 +12,7 @@
   "servers": [
     {
       "url": "http://localhost:3333/",
-      "description": "API de testes"
+      "description": ""
     }
   ],
   "paths": {
