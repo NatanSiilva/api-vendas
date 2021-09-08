@@ -10,7 +10,7 @@
 [![](https://img.shields.io/badge/-Contribuir-5276f2)](#contribuir)
 [![](https://img.shields.io/badge/-Social-5276f2)](#rede-social)
 [![](https://img.shields.io/badge/-testarAPI-5276f2)](#testar-api)
-[![](https://img.shields.io/badge/-estruturaDB-5276f2)](#data-base)
+[![](https://img.shields.io/badge/-estruturaBD-5276f2)](#data-base)
 
 </div>
 
