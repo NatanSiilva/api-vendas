@@ -133,7 +133,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
   </p>
 
   </br>
-  <p>Pronto, agora que temos todas as dependencias instaladas podemos configurar arquivo .env</p>
+  <p>Pronto, agora que temos todas as dependencias instaladas podemos configurar arquivo .env.</p>
 
   <p>
 
@@ -192,7 +192,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 <div align="left">
   <h1 id="data-base">🔗Testes automatizados</h1>
 
-  <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos testes</p>
+  <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos testes.</p>
 
   <p>
 
