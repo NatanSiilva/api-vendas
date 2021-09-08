@@ -25,7 +25,7 @@
   </p>
 
   <p>
-    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a> e biblioteca <a href="https://www.nginx.com/">Nginx</a> para fazer proxy reverso e habilitar comunicação externa.
+    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a> e a biblioteca <a href="https://www.nginx.com/">Nginx</a> para fazer proxy reverso e habilitar comunicação externa.
 
   <br/>
 
@@ -44,7 +44,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <div align="left">
-  <h1 id="techs">🚀 Tecnologias Utilizadas e Serviços </h1>
+  <h1 id="techs">🚀 Principais tecnologias e Serviços utilizadas </h1>
 
   <p>
     ➡  <a href="https://code.visualstudio.com">VsCode</a> para fazer os códigos em NodeJS e Typescript.</p>
@@ -183,11 +183,36 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
 </div>
 
-  </br>
+</br>
+</br>
+</br>
+
+<div align="left">
+  <h1 id="data-base">🔗Tests automatizados</h1>
+
+  <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos teste</p>
+
+  <p>
+
+    yarn test
+
+  </p>
+
+  <img src="./git/testes01.png">
+   <br/>
+   <br/>
+
+  <img src="./git/testes02.png">
+
+</div>
+
+</br>
+</br>
+</br>
 
 <div>
 
- <h1 id="testar-api">Testar API</h1>
+ <h1 id="testar-api">Swagger Documentação</h1>
 
    <p id="swagger">
    Para que você possa testar API online, você pode ta utilizado a documentação no <a href="https://apivendas.natandev.com.br/api-docs/#/">swagger</a> e na rota POST /users bastar criar um usuário com name, email e password. Depois se autenticar na rota POST /sessions.
@@ -203,8 +228,11 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
   </p>
 
-   <img src="./git/swagger02.png" width="500" height="500" align="center">
-  <img src="./git/swagger01.png" width="500" height="500" align="center">
+   <img src="./git/swagger02.png" width="500" height="500">
+   <br/>
+   <br/>
+
+  <img src="./git/swagger01.png" width="500" height="500" >
 
   </div>
 
