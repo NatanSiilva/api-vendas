@@ -20,12 +20,12 @@
   <h1 id="sobre-o-projeto"> ✅ Sobre o projeto </h1>
   <p>
     Este projeto é uma API Restfull de vendas que está sendo feito para por em prática os conhecimentos das tecnologias que domino no backend.
-    As funcionalidades presentes são, cadastrar usuários, cadastrar cliente, cadastrar pedidos dos clientes e cadastrar produtos.
+    As funcionalidades presentes são, cadastrar usuários, cliente, pedidos dos clientes e cadastrar produtos.
     O projeto foi desenvolvido com Design Patterns seguindo alguns dos princípios do SOLID, desacoplando totalmente a regra de negocio dos dados de infraestrutura, como por exemplo (TYPEORM, REPOSITORY, ENTITY, HTTP-ROUTES, CONTROLLER) possibilitando fácil manutenção e troca de ORMs. Usamos também algumas libs como <a href="https://www.npmjs.com/package/tsyringe"> tsyringe</a> que permite a criação de injeção de dependencia que é muito util par mater o código desacoplado. Também a lib <a href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> que serve para prevenir ataques de força bruta e entre outras...
   </p>
 
   <p>
-    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a>.
+    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a> e biblioteca <a href="https://www.nginx.com/">Nginx</a> para fazer proxy reverso e habilitar comunicação externa.
 
   <br/>
 
@@ -38,7 +38,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <center>
-<img src="./git/api2.png" width="60%" height="500"  align="center" >
+<img src="./git/api2.png" width="500" height="500"  align="center" >
 </center>
 
 </br>
@@ -91,6 +91,10 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
   <p>
     ➡
     <a href="https://certbot.eff.org/">Certbot</a> Certificado ssl com <a href="https://letsencrypt.org/pt-br/">letsencrypt</a>
+  </p>
+    </p>
+    ➡
+    <a href="https://www.nginx.com/">Nginx</a> para fazer o proxy reverso
   </p>
   <p>
     ➡
