@@ -25,9 +25,13 @@
   </p>
 
   <p>
-    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado ssl onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a>
+    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a>.
 
-   </p>
+  <br/>
+
+No projeto temos duas branches, a master e a main. A branch master é uma evolução do branch main onde tem toda estrutura do desenvolvimento com Design Patterns e principios SOLID.
+
+  </p>
 
 </div>
 
