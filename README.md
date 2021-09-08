@@ -192,7 +192,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 <div align="left">
   <h1 id="data-base">🔗Testes automatizados</h1>
 
-  <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos teste</p>
+  <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos testes</p>
 
   <p>
 
@@ -217,7 +217,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
  <h1 id="testar-api">Swagger Documentação</h1>
 
    <p id="swagger">
-   Para que você possa testar API online, você pode ta utilizado a documentação no <a href="https://apivendas.natandev.com.br/api-docs/#/">swagger</a> e na rota POST /users bastar criar um usuário com name, email e password. Depois se autenticar na rota POST /sessions. Logo a pois a autenticação vai retornar um objeto e dentro dele vai ter um campo token, é só copiar o token e na parte superior da página vai ter um cadeado com o nome Authorize, é só clicar nele e colar o token e você vai ta pronto para testar todas as rotas.</p>
+    Você pode ta utilizado a documentação no <a href="https://apivendas.natandev.com.br/api-docs/#/">swagger</a> e na rota POST /users, bastar criar um usuário com name, email e password. Em seguida se autenticar na rota POST /sessions. Logo a pois a autenticação vai retornar um objeto e dentro dele vai ter um campo token, é só copiar o token e na parte superior da página vai ter um cadeado com o nome Authorize, é só clicar nele e colar o token e você vai ta pronto para testar todas as rotas.</p>
 
   <p>
 
@@ -229,11 +229,8 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
   </p>
 
-   <img src="./git/swagger02.png" width="500" height="500">
+   <img src="./git/swagger02.png" >
    <br/>
-   <br/>
-
-  <img src="./git/swagger01.png" width="500" height="500" >
 
   </div>
 
@@ -244,7 +241,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 <div align="left">
   <h1 id="data-base">🔗 Estrutura do banco de dados:</h1>
 
-  <img src="./git/pedidos.png" width="500" height="500" align="center">
+  <img src="./git/pedidos.png" align="center">
 </div>
 
 </br>
@@ -274,10 +271,6 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <div align="left">
-  <h1 id="rede-social">📱 Minhas redes sociais</h1>
-
-[![](https://img.shields.io/badge/-Github-434140)](https://github.com/NatanSiilva)
-[![](https://img.shields.io/badge/-Linkedin-3DC3C9)](https://www.linkedin.com/in/natanael-silva-33b374188//)
 
 </div>
 
@@ -285,4 +278,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
 Este projeto esta sobe a licença MIT. Veja a [LICENÇA](https://opensource.org/licenses/MIT) para saber mais.
 
-Feito com ❤️ por Alquipo Neto 👋🏽 [Entre em contato!](https://www.linkedin.com/in/alquiponeto/)
+Feito com ❤️ por Natanael Silva 👋🏽
+
+[![](https://img.shields.io/badge/-Github-434140)](https://github.com/NatanSiilva)
+[![](https://img.shields.io/badge/-Linkedin-3DC3C9)](https://www.linkedin.com/in/natanael-silva-33b374188//)
