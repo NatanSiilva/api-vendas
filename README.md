@@ -19,13 +19,13 @@
 <div align="left">
   <h1 id="sobre-o-projeto"> ✅ Sobre o projeto </h1>
   <p>
-    Este projeto é uma API Restfull de vendas que está sendo feito para por em prática os conhecimentos das tecnologias que domino no backend.
-    As funcionalidades presentes são, cadastrar usuários, cliente, pedidos dos clientes e cadastrar produtos.
-    O projeto foi desenvolvido com Design Patterns seguindo alguns dos princípios do SOLID, desacoplando totalmente a regra de negocio dos dados de infraestrutura, como por exemplo (TYPEORM, REPOSITORY, ENTITY, HTTP-ROUTES, CONTROLLER) possibilitando fácil manutenção e troca de ORMs. Usamos também algumas libs como <a href="https://www.npmjs.com/package/tsyringe"> tsyringe</a> que permite a criação de injeção de dependencia que é muito util par mater o código desacoplado. Também a lib <a href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> que serve para prevenir ataques de força bruta e entre outras...
+    Este projeto é uma API Restfull de vendas que está sendo feita para por em prática os conhecimentos das tecnologias que domino no backend.
+    As funcionalidades presentes são, cadastrar usuários, clientes, pedidos dos clientes e cadastrar produtos.
+    O projeto foi desenvolvido com Design Patterns seguindo alguns dos princípios do SOLID, desacoplando totalmente a regra de negócio dos dados de infraestrutura, como por exemplo: (typeorm, repository, entity, http-routes, controllers), possibilitando fácil manutenção e troca de ORMs. Usamos também algumas libs como <a href="https://www.npmjs.com/package/tsyringe">tsyringe</a> que permite a criação de injeção de dependência que é muito util para mater o código desacoplado. Assim como a lib <a href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> que serve para prevenir ataques de força bruta e entre outras...
   </p>
 
   <p>
-    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi usado <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a> e a biblioteca <a href="https://www.nginx.com/">Nginx</a> para fazer proxy reverso e habilitar comunicação externa.
+    O projeto foi hospedado em um droplet Docker 19.03.12 no Ubuntu 20.04 na <a href="https://www.digitalocean.com/">Digital ocean</a>, foi usado também <a href="https://certbot.eff.org/">Certbot</a> para gerar o certificado SSL, onde podemos testar API com a documentação do swagger <a href="#swagger">aqui.</a> E para configuração de DNS foi utilizado o servicos da <a href="https://www.cloudflare.com/pt-br/">Cloudflare</a> e a biblioteca <a href="https://www.nginx.com/">Nginx</a> para fazer proxy reverso e habilitar comunicação externa.
 
   <br/>
 
@@ -44,10 +44,8 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <div align="left">
-  <h1 id="techs">🚀 Principais tecnologias e Serviços utilizadas </h1>
+  <h1 id="techs">🚀 Principais tecnologias e Serviços utilizados </h1>
 
-  <p>
-    ➡  <a href="https://code.visualstudio.com">VsCode</a> para fazer os códigos em NodeJS e Typescript.</p>
   <p>
     ➡ <a href="https://insomnia.rest">Insominia</a> para testar a api feita.
   </p>
@@ -102,7 +100,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
   </p>
   <p>
     ➡
-    <a href="https://www.typescriptlang.org"> PostgresSQL</a>
+    <a href="https://www.typescriptlang.org">PostgresSQL</a>
   </p>
   <p>
     ➡
@@ -121,7 +119,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
   <p>➡ Vá no cmd dele(no Vscode o nome é "terminal") ou abra o cmd da sua máquina, digite e execute: </p>
   <p>
 
-    git clone git@github.com:NatanSiilva/api
+    git clone https://github.com/NatanSiilva/api-vendas.git
 
   </p>
 
@@ -141,7 +139,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
     APP_SECRET= Aqui vai uma hash da sua escolha
     APP_API_URL=http://localhost:3333 Url para cessar a aplicação
-    APP_WEB_URL=http://localhost:3000
+    APP_WEB_URL=http://localhost:3000 Url para testar o email fake Ethereal
     REDIS_HOST= pode ser configurado no arquivo docker-comose.yml
     REDIS_PORT= Pode ser configurado no arquivo docker-comose.yml
     REDIS_PASS= pode ser configurado no arquivo docker-comose.yml
@@ -160,15 +158,19 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 
   </p>
 
+<p>
+  <strong>OBS:</strong> para que você venha utilizar rota POST/users/forgot e POST/users/reset você precisa criar uma conta na AWS e fazer algumas configurações com SES (Amazon Simple Email Service), onde só é possível testar com um e-mail verificado. Em breve estarei fazendo um artigo sobre, enquanto isso não acontece fico a disposição para ajudar.
+</p>
+
   </br>
 
   <p>
-   Depois de configurar o .env, precisamo apenas renomear o ormconfig.example.json para ormconfig.json e executar o seguinte comando:
+   Depois de configurar o .env, precisamos apenas renomear o ormconfig.example.json para ormconfig.json e executar o seguinte comando:
   </p>
 
    <p>
 
-    docker-compose up - para iniciar o container do postres e redis.
+    docker-compose up - para iniciar o container do postgresql e redis.
 
     docker-compose stop - para parar o processo
 
@@ -188,7 +190,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <div align="left">
-  <h1 id="data-base">🔗Tests automatizados</h1>
+  <h1 id="data-base">🔗Testes automatizados</h1>
 
   <p>Para rodar os teste basta executar o comando yarn test, OBS: os testes não estão 100% concluidos. Para ver o andamento dos teste da aplicação em porcentagem como ta na imagem abaixo, vá na pasta coverage na raiz do projeto e no arquivo index.html clique com o botão direito e selecionar a opção <strong>Open With Live Serve</strong> que vai abrir uma tela no browser com as informações dos teste</p>
 
@@ -215,8 +217,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
  <h1 id="testar-api">Swagger Documentação</h1>
 
    <p id="swagger">
-   Para que você possa testar API online, você pode ta utilizado a documentação no <a href="https://apivendas.natandev.com.br/api-docs/#/">swagger</a> e na rota POST /users bastar criar um usuário com name, email e password. Depois se autenticar na rota POST /sessions.
-  </p>
+   Para que você possa testar API online, você pode ta utilizado a documentação no <a href="https://apivendas.natandev.com.br/api-docs/#/">swagger</a> e na rota POST /users bastar criar um usuário com name, email e password. Depois se autenticar na rota POST /sessions. Logo a pois a autenticação vai retornar um objeto e dentro dele vai ter um campo token, é só copiar o token e na parte superior da página vai ter um cadeado com o nome Authorize, é só clicar nele e colar o token e você vai ta pronto para testar todas as rotas.</p>
 
   <p>
 
