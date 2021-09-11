@@ -239,7 +239,7 @@ No projeto temos duas branches, a master e a main. A branch master é uma evolu�
 </br>
 
 <div align="left">
-  <h1 id="data-base">🔗 Estrutura do banco de dados:</h1>
+  <h1 id="data-base">🔗 Estrutura do banco de dados</h1>
 
   <img src="./git/pedidos.png" align="center">
 </div>
