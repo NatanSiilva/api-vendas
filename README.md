@@ -19,7 +19,7 @@
 <div align="left">
   <h1 id="sobre-o-projeto"> ✅ Sobre o projeto </h1>
   <p>
-    Este projeto é uma API Restfull de vendas que está sendo feita para por em prática os conhecimentos das tecnologias que domino no backend.
+    Este projeto é uma API Restfull de vendas que está sendo feita para por em prática os conhecimentos das tecnologias no backend.
     As funcionalidades presentes são, cadastrar usuários, clientes, pedidos dos clientes e cadastrar produtos.
     O projeto foi desenvolvido com Design Patterns seguindo alguns dos princípios do SOLID, desacoplando totalmente a regra de negócio dos dados de infraestrutura, como por exemplo: (typeorm, repository, entity, http-routes, controllers), possibilitando fácil manutenção e troca de ORMs. Usamos também algumas libs como <a href="https://www.npmjs.com/package/tsyringe">tsyringe</a> que permite a criação de injeção de dependência que é muito util para mater o código desacoplado. Assim como a lib <a href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> que serve para prevenir ataques de força bruta e entre outras...
   </p>
